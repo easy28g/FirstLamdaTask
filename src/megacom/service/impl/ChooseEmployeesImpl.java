@@ -51,6 +51,8 @@ public class ChooseEmployeesImpl {
         long count = employeeStream
                 .count();
 
+        Stream<Employee> employeeStream1 = employees.stream();
+
         Stream<Employee> employeeStreamOf = Stream.of(
                 new Employee("Azamat", "Duisheev", Otdel.IT, 3, 23),
                 new Employee("Jyldyzbek", "Osmonkulov", Otdel.IT, 3, 21),
@@ -62,10 +64,14 @@ public class ChooseEmployeesImpl {
                 new Employee("Intern-1", "FamIntern-1", Otdel.IT, 2, 21),
                 new Employee("Intern-2", "FamIntern-2", Otdel.IT, 1, 22)
         );
+        System.out.println("**********************************************************");
+        employeeStream1.forEach(s -> System.out.println(s.getFirstname()+" "+s.getSecondname()+"; "+ s.getOtdel()
+        +"; exp = "+s.getExpiriens()+"; age = "+s.getAge()));
 
         long countOf = employeeStreamOf
                 .filter(employee -> employee.getExpiriens()>3)
                 .count();
+
         System.out.println("**********************************************************");
         System.out.println("Колличество сотрудников опыт которых больше 3 лет == "+countOf);
         //System.out.println(count);
